@@ -18,7 +18,7 @@ data_ARIMA_cut = data_ARIMA#.iloc[0:700,] #데이터 700까지만 추출
 data_ARIMA_cut.tail() #데이터 자름
 
 
-model = ARIMA(data_ARIMA_cut, order = (1,1,0)) #ARIMA(1,1,0)을 따름
+model = ARIMA(data_ARIMA_cut, order = (0,2,1)) #ARIMA(0,2,1)을 따름
 model_fit = model.fit(trend = 'nc', full_output = True, disp = 1)
 #print(model_fit.summary())########## 모델 정확도 파악#####################
 model_fit.plot_predict() ########### 모델 출력 ##############x축좀.. 하..
@@ -27,6 +27,8 @@ model_fit.plot_predict() ########### 모델 출력 ##############x축좀.. 하..
 #print(fore)
 
 plt.title('Southern Oscillation Index (SOI) Prediction')
+plt.axhline(y=0.934867,color = 'g')
+plt.axhline(y=-0.934867, color = 'g')
 plt.axhline(y=0,color='r')
 plt.legend(['Prediction', 'Value']) 
 ########### 여기까지 예측##################
@@ -39,6 +41,8 @@ ax = fig.add_subplot(1,1,1)
 ax.set(title = 'Southern Oscillation Index (SOI)')
 x_values = df['Date']
 y_values = df['Value']
+ax.axhline(y=0.934867,color = 'g')
+ax.axhline(y=-0.934867, color = 'g')
 ax.axhline(y=0,color='r')
 ax.plot(x_values,y_values,linewidth = 1)  ######### 
 plt.show()##### 출력 #######
