@@ -28,7 +28,7 @@ model_fit.plot_predict() ########### 모델 출력 ##############x축좀.. 하..
 
 plt.title('Southern Oscillation Index (SOI) Prediction')
 plt.axhline(y=0,color='r')
-plt.legend(['Value', 'Prediction']) 
+plt.legend(['Prediction', 'Value']) 
 ########### 여기까지 예측##################
 
 plot_acf(data_ARIMA_cut)
